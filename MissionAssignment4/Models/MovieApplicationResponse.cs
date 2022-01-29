@@ -10,10 +10,7 @@ namespace MissionAssignment4.Models
     {
         [Key]
         [Required]
-        public int ApplicationId { get; set; }
-
-        [Required]
-        public string Category { get; set; }
+        public int MovieId { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -34,6 +31,11 @@ namespace MissionAssignment4.Models
 
         [MaxLength(25)]
         public string Notes { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
+
 
     }
 }
