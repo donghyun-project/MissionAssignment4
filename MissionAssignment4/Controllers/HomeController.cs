@@ -19,16 +19,19 @@ namespace MissionAssignment4.Controllers
             movieContext = movieData;
         }
 
+        // Show Index view
         public IActionResult Index()
         {
             return View();
         }
 
+        // Show MyPodCasts view
         public IActionResult MyPodcasts()
         {
             return View();
         }
 
+        // Show Adding Editing Movie data view
         [HttpGet]
         public IActionResult Movies()
         {
@@ -38,9 +41,11 @@ namespace MissionAssignment4.Controllers
             return View();
         }
 
+        // Send Movie information input to the database
         [HttpPost]
         public IActionResult Movies(MovieApplicationResponse ar)
         {
+            // to see if user puts in correct input
             if (ModelState.IsValid)
             {
                 movieContext.Add(ar);
@@ -85,6 +90,7 @@ namespace MissionAssignment4.Controllers
             //}
         }
 
+        // Show Movies Data in List
         public IActionResult MovieList()
         {
             var applications = movieContext.Responses
@@ -95,6 +101,7 @@ namespace MissionAssignment4.Controllers
             return View(applications);
         }
         
+        // getting edit view with data
         [HttpGet]
         public IActionResult Edit(int movieid)
         {
@@ -105,6 +112,7 @@ namespace MissionAssignment4.Controllers
             return View("Movies", mApplication);
         }
 
+        // send editted data
         [HttpPost]
         public IActionResult Edit(MovieApplicationResponse blah)
         {
@@ -114,6 +122,7 @@ namespace MissionAssignment4.Controllers
             return RedirectToAction("MovieList");
         }
 
+        // getting delete view
         [HttpGet]
         public IActionResult Delete(int movieid)
         {
@@ -122,6 +131,7 @@ namespace MissionAssignment4.Controllers
             return View(mApplication);
         }
 
+        // confirming delete data
         [HttpPost]
         public IActionResult Delete(MovieApplicationResponse ar)
         {
